@@ -27,6 +27,10 @@ npm run dev
 # open http://localhost:3000
 ```
 
+## Status
+
+🚧 **Under active development** — currently integrating Google Gemini and Anthropic Claude as the analysis backends, so the same article can be graded by multiple models and the ratings compared.
+
 ## Notes
 
 This is an experiment in media literacy, not a political statement — it analyzes framing and emotional language on both sides with the same rubric.
