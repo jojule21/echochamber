@@ -1,24 +1,32 @@
-## NOT MEANT TO BE POLARIZING, JUST DOING IT FOR THE LOLZ 
+# echochamber — Media Bias Analyzer
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A Next.js app that pulls the same day's top headlines from CNN and Fox News side by side, then runs any article snippet through an LLM-powered analysis that rates its bias and flags emotional-manipulation techniques.
 
-## Getting Started
+The point: see how differently two outlets frame the same news, with an analyst that grades the framing instead of you having to guess.
 
-First, run the development server:
+## How it works
+
+- `pages/index.js` — fetches top headlines from both outlets via [NewsAPI](https://newsapi.org) and renders them for comparison; caches analyses client-side so repeat lookups are free.
+- `pages/api/` — serverless route that takes an article snippet + source, builds a media-bias-analyst prompt, and returns a structured analysis (bias type, bias rating, explanation).
+
+## Setup
+
+```bash
+npm install
+```
+
+Create `.env.local`:
+
+```
+NEXT_PUBLIC_NEWS_API_KEY=your_newsapi_key
+# plus the LLM API key used by pages/api/ (see that file)
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
+This is an experiment in media literacy, not a political statement — it analyzes framing and emotional language on both sides with the same rubric.
