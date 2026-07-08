@@ -7,25 +7,32 @@ The point: see how differently two outlets frame the same news, with an analyst 
 ## How it works
 
 - `pages/index.js` — fetches top headlines from both outlets via [NewsAPI](https://newsapi.org) and renders them for comparison; caches analyses client-side so repeat lookups are free.
-- `pages/api/` — serverless route that takes an article snippet + source, builds a media-bias-analyst prompt, and returns a structured analysis (bias type, bias rating, explanation).
+- `pages/api/ollama.js` — API route that takes an article snippet + source, builds a media-bias-analyst prompt, and returns a structured analysis (bias type, 0-10 bias rating, explanation) from a locally hosted LLM via [Ollama](https://ollama.com).
 
 ## Setup
 
+1. Install [Ollama](https://ollama.com) and pull a model:
+
 ```bash
-npm install
+ollama pull mistral
+ollama serve
 ```
 
-Create `.env.local`:
+2. Create `.env.local` with a free [NewsAPI](https://newsapi.org) key:
 
 ```
 NEXT_PUBLIC_NEWS_API_KEY=your_newsapi_key
-# plus the LLM API key used by pages/api/ (see that file)
 ```
 
+3. Run:
+
 ```bash
+npm install
 npm run dev
 # open http://localhost:3000
 ```
+
+Runs fully local — article analysis never leaves your machine.
 
 ## Status
 
