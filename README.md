@@ -1,6 +1,6 @@
 # echochamber — Media Bias Analyzer
 
-A Next.js app that pulls the same day's top headlines from CNN and Fox News side by side, then runs any article snippet through an LLM-powered analysis that rates its bias and flags emotional-manipulation techniques.
+A Next.js app that pulls the same day's top headlines from any news article side by side, then runs any article snippet through an LLM-powered analysis that rates its bias and flags emotional-manipulation techniques.
 
 The point: see how differently two outlets frame the same news, with an analyst that grades the framing instead of you having to guess.
 
